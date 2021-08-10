@@ -13,7 +13,7 @@ class App extends Component{
       mode:"welcome",
       selected_content_id:2,
       subject:{title:"WEB", sub:"World Wide Web"},
-      welcome:{title:"Welcome", desc:"Hello React!!!!"},
+      welcome:{title:"Welcome", desc:"Hello React"},
       contents:[
         {id:1, title:"HTML", desc:"HTML is HyperText Markup Language"},
         {id:2, title:"CSS", desc:"CSS id for design"},
@@ -34,8 +34,8 @@ class App extends Component{
       while( i < this.state.contents.length){
         var data = this.state.contents[i];
         if (data.id === this.state.selected_content_id){
-          _title = this.state.contents[0].title;
-          _desc = this.state.contents[0].desc;
+          _title = this.state.contents[i].title;
+          _desc = this.state.contents[i].desc;
           break;
         }
         i += 1;
@@ -55,9 +55,9 @@ class App extends Component{
                 mode:'welcome'
               });
             }.bind(this)}
-         >
-        </Subject>
+         ></Subject>
         <TOC 
+
           onChangePage={function(id){
             this.setState({
               mode:"read",
@@ -65,8 +65,12 @@ class App extends Component{
             });
           }.bind(this)}
           data={this.state.contents}
-          >
-        </TOC>
+        ></TOC>
+        <ul>
+          <li><a href="/create">create</a></li>
+          <li><a href="/update">update</a></li>
+          
+        </ul>
         <Content title={_title} desc={_desc}></Content>
       </div>
     );
